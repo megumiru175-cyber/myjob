@@ -1,0 +1,2 @@
+# myjob
+javascripiの勉強

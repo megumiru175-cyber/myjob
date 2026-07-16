@@ -1,0 +1,16 @@
+{% extends "base/myjob_base.html" %}
+{% block body %}
+
+<ul>
+    {% for page in page_list %}
+     <li>{{ page.Page_date }}: 
+        <a href="{% url 'myjob:page_detail'  page.id %}">{{ page.title }}</a>
+    </li>
+    {% empty %}
+        <div>ページが一つもありません。</div>
+    {% endfor %}
+</ul>
+<br>
+<div class="button">
+<a href="{% url 'myjob:menu' %}">MENU</a></div>
+{% endblock %}

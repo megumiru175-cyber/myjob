@@ -1,0 +1,44 @@
+{% extends "base/myjob_base.html" %}
+{% load static %}
+{% block body %}
+
+
+
+{% load static %}
+{% load static %}
+
+<div class="updown">
+    <img id="good" src="{% static 'action/GOOD.png' %}" width="150">
+</div>
+
+<p><span id="goodCount">0</span></p>
+
+<div class="yokoyure">
+    <img id="heart" src="{% static 'action/h.png' %}" width="150">
+</div>
+
+<p><span id="heartCount">0</span></p>
+
+<script>
+let goodCount = 0;
+let heartCount = 0;
+
+// GOOD画像
+document.getElementById("good").addEventListener("click", function () {
+    goodCount++;
+    document.getElementById("goodCount").textContent = goodCount;
+});
+
+// ハート画像
+document.getElementById("heart").addEventListener("click", function () {
+    heartCount++;
+    document.getElementById("heartCount").textContent = heartCount;
+});
+</script>
+<br>
+
+<br>
+<div class="button">
+    <a href="{% url 'myjob:menu' %}">MENU</a>
+</div>
+{% endblock %}

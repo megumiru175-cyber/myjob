@@ -1,0 +1,11 @@
+{% extends "base/myjob_base.html" %}
+{% block body %}
+<h2>内容を書く</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <div class="button">
+    <button type="submit">更新</button>
+    </div>
+
+{% endblock %}

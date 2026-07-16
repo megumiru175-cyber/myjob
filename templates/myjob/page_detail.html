@@ -1,0 +1,73 @@
+{% extends "base/myjob_base.html" %}
+{% load static %}
+{% block body %}
+<h2>{{ page.title }}</h2>
+
+<div>{{ page.Page_date }}</div>
+
+<div>{{ page.body|linebreaksbr }}</div>
+{% if page.picture %}
+    <img src="{{ page.picture.url}}"/>
+{% endif %}
+<br>
+<div class="box">
+  <div class="updown">
+    <img id="good" src="{% static 'action/GOOD.png' %}" width="75">
+    <p><span id="goodCount">0</span></p>
+</div>
+  <div class="yokoyure">
+    <img id="heart" src="{% static 'action/h.png' %}" width="75">
+    <p><span id="heartCount">0</span></p>
+</div></div>
+
+<script>
+let goodCount = 0;
+let heartCount = 0;
+
+// GOOD画像
+document.getElementById("good").addEventListener("click", function () {
+    goodCount++;
+    document.getElementById("goodCount").textContent = goodCount;
+});
+
+// ハート画像
+document.getElementById("heart").addEventListener("click", function () {
+    heartCount++;
+    document.getElementById("heartCount").textContent = heartCount;
+});
+</script>
+<br>
+
+
+<div class="button">
+    <a href="{% url 'myjob:page_update' page.id %}">更新</a>
+</div>
+<br>
+<div class="button">
+    <a href="{% url 'myjob:page_delete' page.id %}">削除</a>
+</div>
+<br>
+
+<h2>コメント</h2>
+
+{% for comment in comments %}
+<div>
+    {{ comment.user_name }}
+    {{ comment.created_at }}
+    <p>{{ comment.message }}</p>
+</div>
+<hr>
+{% empty %}
+<p>まだコメントはありません。</p>
+{% endfor %}
+
+<h2>コメントを書く</h2>
+
+<form method="post" action="{% url 'myjob:comment' page.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">コメントする</button>
+</form>
+<div class="button">
+    <a href="{% url 'myjob:menu' %}">MENU</a></div>
+{% endblock %}

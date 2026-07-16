@@ -1,0 +1,11 @@
+{% extends "base/myjob_base.html" %}
+{% block body %}
+
+<h2>内容を書く</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <button type="submit">保存</button>
+</form>
+<a href="{% url 'myjob:menu' %}">MENU</a>
+{% endblock %}

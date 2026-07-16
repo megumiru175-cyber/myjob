@@ -1,0 +1,12 @@
+{% extends "base/myjob_base.html" %}
+{% block body %}
+
+<p> {{datetime_now}}</p>
+
+<form action="{% url 'accounts:logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">ログアウト</button>
+</form>
+<div class="button">
+<a href="{% url 'myjob:menu' %}">MENU</a></div>
+{% endblock %}

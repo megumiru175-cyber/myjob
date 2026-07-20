@@ -7,3 +7,7 @@ document.getElementById('aisatu').textContent ="おはようございます。"
 }else{
 document.getElementById('aisatu').textContent ="お疲れ様です。"
 }
+
+var currentDate = new Date()
+var time = currentDate.getTime()
+console.log(time) 

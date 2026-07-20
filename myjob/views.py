@@ -1,16 +1,26 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
-from .models import Page,Comment
-from .forms import PageForm,CommentForm
+from .models import Page,Comment,User
+from .forms import PageForm,CommentForm,LoginForm
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from django.views.generic import CreateView
 from django.urls import reverse
 
-
-
 from django.shortcuts import render
+
+class LoginView(LoginRequiredMixin,View):
+    form_class = LoginForm
+    template_name = "registration/login.html"
+
+# ここでURLの棲み分けをする
+    def get_success_url(self):
+        user = User.objects.filter(username=self.request.POST['username'])
+        if user.is_employee:
+            return reverse('kannri')
+        else:
+            return reverse('ippan')
 
 class IndexView(LoginRequiredMixin,View):
      def get(self, request):

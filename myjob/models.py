@@ -3,6 +3,14 @@ from django.contrib.auth.models import User
 from pathlib import Path
 import uuid
 from django.utils import timezone
+from django.contrib.auth.models import ippanUser
+from django.db import models
+
+
+class User(ippanUser):
+  is_kannri = models.BooleanField(default=False)
+  is_ippan = models.BooleanField(default=False)
+
 
 class Page(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,editable=False,verbose_name="ID")

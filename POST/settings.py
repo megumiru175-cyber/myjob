@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myjob.apps.MyjobConfig'
+    'myjob.apps.MyjobConfig',
+    'accounts.apps.AccountsConfig',
+   
 ]
 
 MIDDLEWARE = [
@@ -133,5 +135,6 @@ MEDIA_ROOT = BASE_DIR/"media"
 MEDIA_URL = "/media/"
 
 LOGIN_URL = "/login/"
-LOGIN_REDIRECT_URL = "/myjob/menu/"
+LOGIN_REDIRECT_URL = "/myjob/index/"
 LOGOUT_REDIRECT_URL = "/login/"
+AUTH_USER_MODEL = "accounts.CustomUser"

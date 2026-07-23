@@ -4,6 +4,7 @@
 
 <p> {{datetime_now}}</p>
 
+
 <form action="{% url 'accounts:logout' %}" method="post">
     {% csrf_token %}
     <button type="submit">ログアウト</button>

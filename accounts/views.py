@@ -1,13 +1,10 @@
-from django.shortcuts import render, redirect
-from .forms import SignupForm
+from django import forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 
-def signup_view(request):
-    if request.method == "POST":
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("login")
-    else:
-        form = SignupForm()
+User = get_user_model()
 
-    return render(request, "accounts/signup.html", {"form": form})
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = [User.USERNAME_FIELD] + User.REQUIRED_FIELDS

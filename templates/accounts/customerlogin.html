@@ -1,0 +1,21 @@
+{% extends "base/myjob_base.html" %}
+{% block body %}
+
+<form action="{% url 'mypage.html' %}/" method="post">
+  <p>
+
+      <label for="id_username">ユーザー名:</label>
+      <input type="text" name="username" required id="id_username">
+  </p>
+  <p>
+      <label for="id_password">パスワード:</label>
+      <input type="password" name="password" required id="id_password">
+  </p>
+        {% csrf_token %}
+        {{ form }}
+  <p><input type="submit" value="送信"></p>
+</form>
+
+{% endblock %}
+
+  

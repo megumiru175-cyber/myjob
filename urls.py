@@ -21,7 +21,7 @@ from django.conf.urls.static import  static
 from django.shortcuts import redirect
 
 urlpatterns = [
-    path("", include("myjob.urls"))
+    path("", include("myjob.urls")),
     path('admin/', admin.site.urls),
     path("myjob/", include("myjob.urls")),
     path('', include('accounts.urls')),

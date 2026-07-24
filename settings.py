@@ -129,6 +129,8 @@ MEDIA_ROOT = BASE_DIR/"media"
 
 MEDIA_URL = "/media/"
 
+LOGIN_URL = "accounts:cslogin.html"
+
 LOGIN_REDIRECT_URL = "myjob:index"
 
 LOGOUT_REDIRECT_URL = "/login/"

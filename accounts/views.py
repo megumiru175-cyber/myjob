@@ -1,10 +1,14 @@
-from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, get_object_or_404
 
+# カスタムユーザーを取得
 User = get_user_model()
 
-class CreateUserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = [User.USERNAME_FIELD] + User.REQUIRED_FIELDS
+def users_view(request):
+    users = User.objects.all()
+
+    context = {
+        'users' : users
+    }
+
+    return render(request, '', context)

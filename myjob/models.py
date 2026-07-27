@@ -3,7 +3,15 @@ from django.contrib.auth.models import AbstractUser
 from pathlib import Path
 import uuid
 from django.utils import timezone
+from django.conf import settings
 
+class Article(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    title = models.CharField(max_length=100)
+    text = models.TextField()
 
 
 class Page(models.Model):

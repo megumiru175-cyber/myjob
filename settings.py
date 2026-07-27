@@ -129,10 +129,9 @@ MEDIA_ROOT = BASE_DIR/"media"
 
 MEDIA_URL = "/media/"
 
-LOGIN_URL = "accounts:cslogin.html"
-
+"/login/"
 LOGIN_REDIRECT_URL = "myjob:index"
 
-LOGOUT_REDIRECT_URL = "/login/"
+LOGOUT_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

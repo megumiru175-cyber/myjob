@@ -1,17 +1,38 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404
-
+from .forms import SignupForm
+from django.contrib.auth import login
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic import TemplateView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 # カスタムユーザーを取得
+
 User = get_user_model()
 
-def users_view(request):
-    users = User.objects.all()
 
-    context = {
-        'users' : users
-    }
 
-    return render(request, '', context)
+class MySignupView(CreateView):
+    template_name = 'accounts/login.html'
+    form_class = SignupForm
+    success_url = '/accounts/user/'
+    
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        user = self.object
+        login(self.request, user)
+        return result
+    
+class MyUserView(LoginRequiredMixin, TemplateView):
+    template_name = 'accounts/new.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['users'] = User.objects.exclude(username=self.request.user.username)
+        return context
 
 def new_view(request):
     return render(request, "accounts/new.html")

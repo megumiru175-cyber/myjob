@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import CustomUser
 
-# Register your models here.
+# 管理サイトにカスタムユーザーモデルを登録する
+admin.site.register(CustomUser)
+from .models import CustomUser
+

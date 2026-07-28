@@ -5,12 +5,9 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="ログイン">
+    <input type="submit" value="新規登録">
 </form>
 
-
+    <a href="{% url 'accounts:login' %}">ログイン画面へ戻る</a>
+</p>
  
-
-{% endblock %}
-
-  

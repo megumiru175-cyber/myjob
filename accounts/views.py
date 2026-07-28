@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from .forms import SignupForm
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
@@ -12,7 +12,7 @@ User = get_user_model()
 
 
 class MySignupView(CreateView):
-    template_name = 'accounts/login.html'
+    template_name = "accounts/signup.html"
     form_class = SignupForm
     success_url = '/accounts/user/'
     
@@ -35,4 +35,12 @@ class MyUserView(LoginRequiredMixin, TemplateView):
         return context
 
 def new_view(request):
-    return render(request, "accounts/new.html")
+    if request.method == "POST":
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("accounts:login")
+    else:
+        form = SignupForm()
+
+    return render(request, "accounts/new.html", {"form": form})

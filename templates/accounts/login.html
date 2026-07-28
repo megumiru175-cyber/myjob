@@ -5,13 +5,13 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    
     <input type="submit" value="ログイン">
 </form>
-
+<br>
 <div class="button">
-<a href="{% url 'myjob:menu' %}">新規登録はこちら</a>
-
- 
+<a href="{% url 'accounts:new' %}">新規登録</a>
+</div>
 
 {% endblock %}
 

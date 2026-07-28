@@ -12,3 +12,6 @@ def users_view(request):
     }
 
     return render(request, '', context)
+
+def new_view(request):
+    return render(request, "accounts/new.html")

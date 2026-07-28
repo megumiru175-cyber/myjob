@@ -5,10 +5,11 @@ from .models import Comment
 
 User = get_user_model()
 
-class RegisterForm(UserCreationForm):
+class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = [User.USERNAME_FIELD] + User.REQUIRED_FIELDS
+
 
 class PostForm(forms.ModelForm):
     class Meta:

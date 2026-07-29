@@ -51,4 +51,3 @@ class MypageView(TemplateView):
         return context
     
    
-    

@@ -40,3 +40,15 @@ def new_view(request):
         form = SignupForm()
 
     return render(request, "accounts/new.html", {"form": form})
+
+class MypageView(TemplateView):
+    template_name = "accounts/mypage.html"
+    def get_context_data(self, **kwargs):
+        # 継承元であるTemplateViewのget_context_data()メソッド
+        context = super().get_context_data(**kwargs)
+        print(context)
+
+        return context
+    
+   
+    

@@ -4,13 +4,10 @@
 
 {% block title %}
 マイページ
-{% endblock %}
-
 {% block main %}
-<h2>マイページ</h2>
+<h2>{name}さんのマイページ</h2>
 <p>ユーザー名 : {name}/p>
 <p>趣味、好きなこと{like}</pp>
-{% endblock %}
 <div class="button">
 <a href="{% url 'myjob:menu' %}">MENU</a></div>
 

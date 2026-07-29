@@ -3,9 +3,7 @@
 {% block body %}
 
 <p> {{datetime_now}}</p>
-<div class="button">
-<a href="{% url 'accounts:mypage' %}">MENU</a>
-</div>
+
 
 
 <form action="{% url 'accounts:logout' %}" method="post">
@@ -14,4 +12,4 @@
 </form>
 <div class="button">
 <a href="{% url 'myjob:menu' %}">MENU</a></div>
-{% endblock %}
+{% endblock %} 

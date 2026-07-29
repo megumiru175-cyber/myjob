@@ -130,7 +130,7 @@ MEDIA_ROOT = BASE_DIR/"media"
 MEDIA_URL = "/media/"
 
 
-LOGIN_REDIRECT_URL = "accounts:mypage"
+LOGIN_REDIRECT_URL = "myjob:index"
 
 LOGOUT_REDIRECT_URL = "/"
 

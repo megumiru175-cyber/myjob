@@ -10,10 +10,11 @@ from .forms import PageForm, CommentForm
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
-class IndexView(View):
+class IndexView(LoginRequiredMixin,View):
      def get(self, request):
         datetime_now = datetime.now(
             ZoneInfo("Asia/Tokyo")
@@ -21,16 +22,16 @@ class IndexView(View):
         return render(request, "myjob/index.html",{"datetime_now":datetime_now})
      
 
-class MenuView(View):
+class MenuView(LoginRequiredMixin,View):
     def get(self, request, *args, **kwargs):
         return render(request, "myjob/menu.html")
    
-class TouchView(View):
+class TouchView(LoginRequiredMixin,View):
     def get(self, request, *args, **kwargs):
         return render(request, "myjob/touch.html")
 
 
-class PageCreateView(View):
+class PageCreateView(LoginRequiredMixin,View):
     def get(self,request):
         form =PageForm()
         return render(request,"myjob/page_form.html",{"form": form})
@@ -42,12 +43,12 @@ class PageCreateView(View):
             return redirect("myjob:index")
         return render(request,"myjob/page_form.html",{"form": form})
 
-class PageListView(View):
+class PageListView(LoginRequiredMixin,View):
     def get(self,request):
         page_list = Page.objects.order_by("Page_date")
         return render(request,"myjob/page_list.html",{"page_list":page_list})                      
 
-class PageDetailView(View):
+class PageDetailView(LoginRequiredMixin,View):
     def get(self, request, id):
         page = get_object_or_404(Page, id=id)
 
@@ -64,7 +65,7 @@ class PageDetailView(View):
             },
         )
     
-class PageUpdateView(View):
+class PageUpdateView(LoginRequiredMixin,View):
     def get(self,request,id):
         page = get_object_or_404(Page,id=id)
         form =PageForm(instance=page)        
@@ -79,7 +80,7 @@ class PageUpdateView(View):
                             
 
 
-class PageDeleteView(View):
+class PageDeleteView(LoginRequiredMixin,View):
     def get(self,request,id):
         page = get_object_or_404(Page,id=id)
         return render(request, "myjob/comment.html",{"page": page})
@@ -88,7 +89,7 @@ class PageDeleteView(View):
         page.delete()
         return redirect('myjob:page_list')
     
-class CommentView(CreateView):
+class CommentView(LoginRequiredMixin,CreateView):
     model = Comment
     form_class = CommentForm
 

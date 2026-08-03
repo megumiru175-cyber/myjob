@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>日記型SNS</title>
+    
     {% load static %}
+    {% block head %}{% endblock head %}
     <link rel="stylesheet" href="{% static 'myjob/css/base.css' %}">
 </head>
 <body>
+    {% block contents %}{% endblock contents %}
  
    {% block body%}
    {% endblock %}
 </body>
+<!-- フッター -->
+
+        <footer>
+            <div>
+                <p>Copyright © 2023 ren All rights Reserved.</p>
+                <p>Powered by as</p>
+            </div>
+        </footer>
+    </body>
 </html>

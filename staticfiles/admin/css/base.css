@@ -96,6 +96,31 @@ html[data-theme="light"],
     color-scheme: light;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* フッター */
+
+footer {
+    background-color: #614039;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer div {
+    text-align: center;
+    position: relative;
+}
+
+footer p {
+    color: #d3c2bb;
+    font-size: 12px;
+}
 html, body {
     height: 100%;
 }

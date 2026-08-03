@@ -4,7 +4,7 @@ from .models import Page,Comment
 from .forms import PageForm,CommentForm
 from datetime import datetime
 from zoneinfo import ZoneInfo
-from django.views.generic import CreateView
+from django.views.generic import TemplateView, CreateView
 from django.urls import reverse
 from .forms import PageForm, CommentForm
 from django.shortcuts import render
@@ -101,6 +101,15 @@ class CommentView(LoginRequiredMixin,CreateView):
     def get_success_url(self):
         return reverse("myjob:page_detail", kwargs={"id": self.kwargs["id"]})
 
+
+class MypageView(LoginRequiredMixin,TemplateView):
+    template_name = "myjob:mypage.html"
+    def get_context_data(self, **kwargs):
+        # 継承元であるTemplateViewのget_context_data()メソッド
+        context = super().get_context_data(**kwargs)
+        return context
+
+    
 index = IndexView.as_view()
 menu = MenuView.as_view()
 touch = TouchView.as_view()

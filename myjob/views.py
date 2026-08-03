@@ -103,7 +103,7 @@ class CommentView(LoginRequiredMixin,CreateView):
 
 
 class MypageView(LoginRequiredMixin,TemplateView):
-    template_name = "myjob:mypage.html"
+    template_name = "myjob/mypage.html"
     def get_context_data(self, **kwargs):
         # 継承元であるTemplateViewのget_context_data()メソッド
         context = super().get_context_data(**kwargs)
@@ -119,3 +119,4 @@ page_detail = PageDetailView.as_view()
 page_update = PageUpdateView.as_view()
 page_delete = PageDeleteView.as_view()
 comment= CommentView.as_view()
+mypage = MypageView.as_view()

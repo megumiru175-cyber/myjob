@@ -1,7 +1,9 @@
 {% extends "base/myjob_base.html" %}
 {% load static %}
 
-{% block body %}
+ {% block contents %}
+    
+ 
 
 <p id="aisatu">挨拶</p> 
 <script src="{%static 'myjob\js\time.js' %}"></script>
@@ -25,4 +27,4 @@
 <br>
 <div class="button">
 <a href="{% url 'myjob:menu' %}">MENU</a></div>
-{% endblock %}
+{% endblock contents %}

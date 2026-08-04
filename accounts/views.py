@@ -41,6 +41,11 @@ def new_view(request):
 
     return render(request, "accounts/new.html", {"form": form})
 
-
+def my_error_handler(request, *args, **kw):
+    import sys
+    from django.views import debug
+    from django.http import HttpResponse
+    error_html = debug.technical_500_response(request, *sys.exc_info()).content
+    return HttpResponse(error_html)
     
    

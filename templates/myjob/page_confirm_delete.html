@@ -1,5 +1,7 @@
 {% extends "base/myjob_base.html" %}
-{% block body %}
+ {% block contents %}
+   
+ 
     <form method="post">
        {% csrf_token %}
        <p>このページを削除していいですか？</p>
@@ -14,4 +16,4 @@
 {% if page.picture %}
     <img src="{{ page.picture.url}}"/>
 {% endif %}
-{% endblock %}
+ {% endblock contents %}

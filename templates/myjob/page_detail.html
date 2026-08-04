@@ -1,6 +1,7 @@
 {% extends "base/myjob_base.html" %}
 {% load static %}
-{% block body %}
+ {% block contents %}
+   
 <h2>{{ page.title }}</h2>
 
 <div>{{ page.Page_date }}</div>
@@ -70,4 +71,5 @@ document.getElementById("heart").addEventListener("click", function () {
 </form>
 <div class="button">
     <a href="{% url 'myjob:menu' %}">MENU</a></div>
-{% endblock %}
+ {% endblock contents %}
+ 

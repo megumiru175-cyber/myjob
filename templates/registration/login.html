@@ -1,5 +1,7 @@
 {% extends "base/myjob_base.html" %}
-{% block body %}
+ {% block contents %}
+    
+ 
 
 <p> {{datetime_now}}</p>
 <h2>ログイン</h2>
@@ -8,4 +10,4 @@
     {{ form.as_p }}
     <button type="submit">ログイン</button>
 </form>
-{% endblock %}
+{% endblock contents %}

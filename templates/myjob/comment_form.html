@@ -1,5 +1,7 @@
 {% extends "base/myjob_base.html" %}
-{% block body %}
+ {% block contents %}
+   
+ 
 
     <h2 class="titleline"><span>{{ post.title }}</span></h2>
     <form action="" method="POST" id="comment">
@@ -7,4 +9,4 @@
          {{form.as_p}}
         <button type="submit">コメントする</button>
     </form>
-{% endblock %}
+ {% endblock contents %}

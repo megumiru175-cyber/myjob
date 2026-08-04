@@ -1,8 +1,8 @@
 {% extends "base/myjob_base.html" %}
  {% load static %}
-{% block body %}
-{% block title %}<p> {{datetime_now}}</p>{% endblock title %}
 
+{% block contents %}
+<h6>お疲れ様です。今日の日記書いていきますか？</h6>
 
 
 <form action="{% url 'accounts:logout' %}" method="post">
@@ -15,7 +15,4 @@
 <div class="button">
 <a href="{% url 'myjob:mypage' %}">MYPAGE</a></div>
 
-{% block contents %}
-<h1>お疲れ様です。
 {% endblock contents %}
-{% endblock %} 

@@ -1,11 +1,7 @@
 {% extends "base/myjob_base.html" %}
 {% load static %}
-{% block body %}
-
-
-
-{% load static %}
-{% load static %}
+ {% block contents %}
+   
 
 <div class="updown">
     <img id="good" src="{% static 'action/GOOD.png' %}" width="150">
@@ -41,4 +37,6 @@ document.getElementById("heart").addEventListener("click", function () {
 <div class="button">
     <a href="{% url 'myjob:menu' %}">MENU</a>
 </div>
-{% endblock %}
+
+ {% endblock contents %}
+ 

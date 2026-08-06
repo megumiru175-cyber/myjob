@@ -5,6 +5,7 @@ import uuid
 from django.utils import timezone
 from django.conf import settings
 
+
 class Article(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -27,11 +28,19 @@ class Comment(models.Model):
     page = models.ForeignKey(
         Page,
         on_delete=models.CASCADE,
-        related_name="comments"
-    )
+        related_name="comments")
     user_name = models.CharField("名前", max_length=255, default="NONAME")
     message = models.TextField("本文")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user_name
+
+class Edit(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True,verbose_name="表示名")
+    birth_date = models.DateField(null=True, blank=True,verbose_name="誕生日")
+    like = models.TextField(max_length=500, blank=True,verbose_name="suki")
+
+    def __str__(self):
+        return self.bio

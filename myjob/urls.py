@@ -14,4 +14,5 @@ urlpatterns = [
     path("page/<uuid:id>/delete", views.page_delete, name="page_delete"),
     path("comment/create/<uuid:id>/", views.CommentView.as_view(), name="comment"),
     path("mypage/", views.MypageView.as_view(), name="mypage"),
+    path("editprofile/", views.edit_profile, name="editprofile"),
 ]

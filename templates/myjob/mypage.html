@@ -1,17 +1,23 @@
 {% extends "base/myjob_base.html" %}
  {% load static %} 
- {% block contents %}
+ {% block content %}
 
  {% block title %}
 マイページ
 {% endblock title %}
 
 {% block main %}
-<h2>{{name}}さんのマイページ</h2>
-<p>ユーザー名 : {{name}} </p>
-<p>趣味、好きなこと{{like}} </p>
+<h2>{{edit.bio}}さんのマイページ</h2>
+<p>ユーザー名 : {{edit.bio}} </p>
+<p>誕生日 ： {{edit.birth_date}}
+<p>趣味、好きなこと : {{edit.like}} </p>
+
+
+<div class="button">
+<a href="{% url 'myjob:editprofile' %}">mypage更新</a></div>    
+<br>
 <div class="button">
 <a href="{% url 'myjob:menu' %}">MENU</a></div>
 {% endblock main %}
 
-{% endblock contents %}
+{% endblock content %}

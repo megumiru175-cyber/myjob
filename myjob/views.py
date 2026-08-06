@@ -1,16 +1,17 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.views import View
-from .models import Page,Comment
-from .forms import PageForm,CommentForm
+from .models import Page,Comment,Edit
+from .forms import PageForm,CommentForm,EditForm
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from django.views.generic import TemplateView, CreateView
 from django.urls import reverse
-from .forms import PageForm, CommentForm
+from .forms import PageForm, CommentForm,EditForm
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -107,8 +108,24 @@ class MypageView(LoginRequiredMixin,TemplateView):
     def get_context_data(self, **kwargs):
         # 継承元であるTemplateViewのget_context_data()メソッド
         context = super().get_context_data(**kwargs)
+        edit, created = Edit.objects.get_or_create(user=self.request.user)
+        context["edit"] = edit
         return context
 
+
+@login_required
+def edit_profile(request):
+    profile, created = Edit.objects.get_or_create(user=request.user)
+
+    if request.method == "POST":
+        form = EditForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect("myjob:mypage")
+    else:
+        form = EditForm(instance=profile)
+
+    return render(request, "myjob/editprofile.html", {"form": form})
     
 index = IndexView.as_view()
 menu = MenuView.as_view()

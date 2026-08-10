@@ -143,9 +143,8 @@ MEDIA_ROOT = BASE_DIR/"media"
 
 MEDIA_URL = "/media/"
 
-
-LOGIN_REDIRECT_URL = "myjob:index"
-
-LOGOUT_REDIRECT_URL = "accounts:login"  
+LOGIN_URL = "/"
+LOGIN_REDIRECT_URL = "/myjob/"
+LOGOUT_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

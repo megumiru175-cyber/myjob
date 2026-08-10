@@ -38,9 +38,9 @@ class Comment(models.Model):
 
 class Edit(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True,verbose_name="表示名")
+    bio = models.TextField(max_length=50, blank=True,verbose_name="表示名")
     birth_date = models.DateField(null=True, blank=True,verbose_name="誕生日")
-    like = models.TextField(max_length=500, blank=True,verbose_name="suki")
+    like = models.TextField(max_length=500, blank=True,verbose_name="趣味、好きなもの")
 
     def __str__(self):
         return self.bio

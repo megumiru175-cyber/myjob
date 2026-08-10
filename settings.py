@@ -146,6 +146,6 @@ MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = "myjob:index"
 
-LOGOUT_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "accounts:login"  
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

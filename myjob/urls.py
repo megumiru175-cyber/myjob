@@ -4,7 +4,7 @@ from . import views
 app_name = "myjob"
 
 urlpatterns = [
-    path("", views.index, name="index"),
+   
     path("menu/", views.MenuView.as_view(), name="menu"),
     path("touch/", views.touch, name="touch"),
     path("page/create/", views.page_create, name="page_create"),

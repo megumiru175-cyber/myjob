@@ -20,7 +20,7 @@ class IndexView(LoginRequiredMixin,View):
         datetime_now = datetime.now(
             ZoneInfo("Asia/Tokyo")
         ).strftime("%Y年%m月%d日 %H:%M:%S")
-        return render(request, "myjob/index.html",{"datetime_now":datetime_now})
+        return render(request, "myjob/index.html",)
      
 
 class MenuView(LoginRequiredMixin,View):

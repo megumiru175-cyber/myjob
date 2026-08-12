@@ -28,4 +28,4 @@ class CommentForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Edit
-        fields = ('bio', 'birth_date','like')
+        fields = ('bio','birth_date','like')

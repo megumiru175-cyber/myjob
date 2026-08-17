@@ -5,7 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-# カスタムユーザーを取得
+#
 
 User = get_user_model()
 
@@ -34,20 +34,28 @@ def new_view(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
 
+        print("===== POST開始 =====")
+        print(request.POST)
+        print("フォーム:", form)
+        print("フォーム有効:", form.is_valid())
+        print("フォームエラー:", form.errors)
+
         if form.is_valid():
-            form.save()
-            return redirect("accounts:login")
+            try:
+                user = form.save()
+                print("===== 保存成功 =====")
+                print(user)
+                return redirect("accounts:login")
+            except Exception as e:
+                print("===== 保存エラー =====")
+                print(type(e).__name__)
+                print(e)
+                raise
 
     else:
         form = SignupForm()
 
     return render(request, "accounts/new.html", {"form": form})
 
-def my_error_handler(request, *args, **kw):
-    import sys
-    from django.views import debug
-    from django.http import HttpResponse
-    error_html = debug.technical_500_response(request, *sys.exc_info()).content
-    return HttpResponse(error_html)
-    
+
    

@@ -8,8 +8,7 @@ app_name = "accounts"
 urlpatterns = [
     path("",LoginView.as_view(template_name="accounts/login.html"),name="login"),
 
-    path(
-        "login/",LoginView.as_view(template_name="accounts/login.html"),name="login_page"),
+    path( "login/",LoginView.as_view(template_name="accounts/login.html"),name="login_page"),
 
     path("new/", views.new_view, name="new"),
 

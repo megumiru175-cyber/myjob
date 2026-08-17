@@ -2,8 +2,6 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.views import View
 from .models import Page,Comment,Edit
 from .forms import PageForm,CommentForm,EditForm
-from datetime import datetime
-from zoneinfo import ZoneInfo
 from django.views.generic import TemplateView, CreateView
 from django.urls import reverse
 from .forms import PageForm, CommentForm,EditForm
@@ -15,14 +13,8 @@ from django.contrib.auth.decorators import login_required
 
 
 
-class IndexView(LoginRequiredMixin,View):
-     def get(self, request):
-        datetime_now = datetime.now(
-            ZoneInfo("Asia/Tokyo")
-        ).strftime("%Y年%m月%d日 %H:%M:%S")
-        return render(request, "myjob/index.html",)
-     
 
+     
 class MenuView(LoginRequiredMixin,View):
     def get(self, request, *args, **kwargs):
         return render(request, "myjob/menu.html")
@@ -41,7 +33,7 @@ class PageCreateView(LoginRequiredMixin,View):
         form = PageForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            return redirect("myjob:index")
+            return redirect("myjob:menu")
         return render(request,"myjob/page_form.html",{"form": form})
 
 class PageListView(LoginRequiredMixin,View):
@@ -127,7 +119,6 @@ def edit_profile(request):
 
     return render(request, "myjob/editprofile.html", {"form": form})
     
-index = IndexView.as_view()
 menu = MenuView.as_view()
 touch = TouchView.as_view()
 page_create = PageCreateView.as_view()
